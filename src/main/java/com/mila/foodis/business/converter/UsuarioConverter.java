@@ -23,7 +23,7 @@ public class UsuarioConverter {
 
     }
 
-    public UsuarioDTO paraUsuarioDTO(Usuario usuario){
+    public UsuarioDTO paraUsuarioDTO(Usuario usuario){ //Function<Usuario, UsuarioDTO>
         return UsuarioDTO.builder()
                 .id(usuario.getId())
                 .nome(usuario.getNome())

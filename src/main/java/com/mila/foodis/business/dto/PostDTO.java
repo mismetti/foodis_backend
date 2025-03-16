@@ -11,13 +11,13 @@ import java.util.UUID;
 @Data
 public class PostDTO {
 
-    public UUID id = UUID.randomUUID();
-    public String titulo;
-    public String conteudo;
-    public String imagemUrl;
-    public Usuario usuario;
-    public UUID usuarioId;
-    public LocalDateTime dataCriacao;
-    public LocalDateTime dataAtualizacao;
+    private String id;
+    private String titulo;
+    private String conteudo;
+    private String imagemUrl;
+    private Usuario usuario;
+    private UUID usuarioId;
+    private LocalDateTime dataCriacao;
+    private LocalDateTime dataAtualizacao;
 
 }

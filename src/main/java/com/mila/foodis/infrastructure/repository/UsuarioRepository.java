@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface UsuarioRepository extends MongoRepository<Usuario, UUID> {
+public interface UsuarioRepository extends MongoRepository<Usuario, String> {
 
     Optional<Usuario> findByEmail(String email);
 

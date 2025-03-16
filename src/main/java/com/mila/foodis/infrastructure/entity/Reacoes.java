@@ -12,9 +12,9 @@ import java.util.UUID;
 public class Reacoes {
 
     @Id
-    public UUID id = UUID.randomUUID();
-    public String emoji;
-    public UUID user_id;
-    public Date data_criacao;
+    private String id;
+    private String emoji;
+    private UUID user_id;
+    private Date data_criacao;
 
 }

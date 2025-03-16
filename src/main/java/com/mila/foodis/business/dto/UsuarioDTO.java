@@ -1,12 +1,14 @@
 package com.mila.foodis.business.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
-import java.util.UUID;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -14,11 +16,21 @@ import java.util.UUID;
 @Builder
 public class UsuarioDTO {
 
-    private UUID id;
+    private String id;
+
+    @NotNull
+    @NotEmpty
     private String nome;
+
+    @Email
+    @NotNull
     private String email;
+
+    @NotNull
+    @NotEmpty
     private String senha;
+
     private String avatarUrl;
-    private String dataCriacao;
+    private LocalDateTime dataCriacao;
     private String bio;
 }

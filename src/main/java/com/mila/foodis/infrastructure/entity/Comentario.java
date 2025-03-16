@@ -12,7 +12,7 @@ import java.util.UUID;
 public class Comentario {
 
     @Id
-    public UUID id = UUID.randomUUID();
+    private String id;
     private String comentario;
     @DBRef
     private List<Reacoes> reacoes;

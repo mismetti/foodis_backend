@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface PostRepository extends MongoRepository<Post, UUID> {
+public interface PostRepository extends MongoRepository<Post, String> {
 
     Post findById();
 
-    List<Post> findByUsuarioId(UUID idUsuario);
+    List<Post> findByUsuarioId(String idUsuario);
 
 
 }

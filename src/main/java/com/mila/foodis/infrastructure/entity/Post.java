@@ -18,13 +18,13 @@ import java.util.UUID;
 public class Post {
 
     @Id
-    private UUID id = UUID.randomUUID();
+    private String id;
     private String titulo;
     private String conteudo;
     private String imagemUrl;
     @DBRef
     private Usuario usuario;
-    private UUID usuarioId;
+    private String usuarioId;
     private LocalDateTime dataCriacao;
     private LocalDateTime dataAtualizacao;
 

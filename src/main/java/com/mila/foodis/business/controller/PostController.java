@@ -25,7 +25,7 @@ public class PostController {
     private final UsuarioRepository usuarioRepository;
 
     @GetMapping(path = "/usuario/{id}")
-    public ResponseEntity<List<Post>> pesquisarUsuario(@PathVariable UUID id){
+    public ResponseEntity<List<Post>> pesquisarUsuario(@PathVariable String id){
 
         return ResponseEntity.ok(postRepository.findByUsuarioId(id));
     }
