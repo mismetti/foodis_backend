@@ -17,10 +17,10 @@ A aplicação é feita utilizando Spring, Java 23 e MongoDB.
 
 <h2> POSTS </h2>
 
-<ul>POST - salva um post novo </ul>
+<ul>POST - salva um post novo e associa a um usuario </ul>
 <ul>GET - procura posts por usuário </ul>
-<ul>PUT- altera um post *em andamento</ul>
-<ul>DELETE - deleta um post *em andamento</ul>
+<ul>PUT- altera um post pelo id do post</ul>
+<ul>DELETE - deleta um post pelo id do post</ul>
 
 
 O projeto será totalmente OPEN-SOURCE, sendo disponibilizado tanto o código front como do back neste GITHUB.
