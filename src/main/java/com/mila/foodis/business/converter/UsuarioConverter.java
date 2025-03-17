@@ -1,5 +1,6 @@
 package com.mila.foodis.business.converter;
 
+import com.mila.foodis.business.dto.AtualizarUsuarioDTO;
 import com.mila.foodis.business.dto.UsuarioDTO;
 import com.mila.foodis.infrastructure.entity.Post;
 import com.mila.foodis.infrastructure.entity.Usuario;
@@ -12,6 +13,7 @@ public class UsuarioConverter {
 
     public Usuario paraUsuario(UsuarioDTO usuarioDTO){
         return Usuario.builder()
+                .id(usuarioDTO.getId())
                 .nome(usuarioDTO.getNome())
                 .senha(usuarioDTO.getSenha())
                 .bio(usuarioDTO.getBio())
@@ -37,14 +39,14 @@ public class UsuarioConverter {
 
     }
 
-    public Usuario atualizaUsuario(UsuarioDTO usuarioDTO, Usuario entity) {
+    public Usuario atualizaUsuario(AtualizarUsuarioDTO dto, Usuario entity) {
         return Usuario.builder()
-                .nome(usuarioDTO.getNome() != null ? usuarioDTO.getNome() : entity.getNome())
+                .nome(dto.getNome() != null ? dto.getNome() : entity.getNome())
                 .id(entity.getId())
-                .senha(usuarioDTO.getSenha() != null ? usuarioDTO.getSenha() : entity.getSenha())
-                .email(usuarioDTO.getEmail() != null ? usuarioDTO.getEmail() : entity.getEmail())
-                .bio(usuarioDTO.getBio() != null ? usuarioDTO.getBio() : entity.getBio())
-                .avatarUrl(entity.getAvatarUrl())
+                .senha(entity.getSenha())
+                .email(dto.getEmail() != null ? dto.getEmail() : entity.getEmail())
+                .bio(dto.getBio() != null ? dto.getBio() : entity.getBio())
+                .avatarUrl(dto.getAvatarUrl() != null ? dto.getAvatarUrl() : entity.getAvatarUrl())
                 .dataCriacao(entity.getDataCriacao())
                 .build();
 

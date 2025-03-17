@@ -1,9 +1,15 @@
 package com.mila.foodis.business.controller;
 
+import com.mila.foodis.business.dto.AtualizarPostDTO;
+import com.mila.foodis.business.dto.AtualizarUsuarioDTO;
+import com.mila.foodis.business.dto.PostDTO;
+import com.mila.foodis.business.dto.UsuarioDTO;
+import com.mila.foodis.business.service.PostService;
 import com.mila.foodis.infrastructure.entity.Post;
 import com.mila.foodis.infrastructure.entity.Usuario;
 import com.mila.foodis.infrastructure.repository.PostRepository;
 import com.mila.foodis.infrastructure.repository.UsuarioRepository;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
@@ -24,20 +30,34 @@ public class PostController {
 
     private final UsuarioRepository usuarioRepository;
 
-    @GetMapping(path = "/usuario/{id}")
-    public ResponseEntity<List<Post>> pesquisarUsuario(@PathVariable String id){
+    private final PostService postService;
 
-        return ResponseEntity.ok(postRepository.findByUsuarioId(id));
+    @GetMapping(path = "/usuario/{id}")
+    public ResponseEntity<List<PostDTO>> pesquisarPostFeitosPeloUsuario(@PathVariable String id){
+
+        List<PostDTO> pesquisaDePosts = postService.pesquisarPostsFeitosPeloUsuario(id);
+        return ResponseEntity.ok(pesquisaDePosts);
     }
 
-    @PostMapping
-    public ResponseEntity<Post> salvarPost(@RequestBody Post post){
+    @PostMapping(path = "{id}")
+    public ResponseEntity<PostDTO> salvarPost(@RequestBody PostDTO post, @PathVariable String id){
 
-        Optional<Usuario> usuario = usuarioRepository.findById(post.getUsuarioId());
+        PostDTO novoPost = postService.salvarPost(post, id);
 
-        Post novoPost = postRepository.save(post);
         return ResponseEntity.ok(novoPost);
     }
 
+    @DeleteMapping(path = "{id}")
+    public ResponseEntity<Void> deletarPost(@PathVariable String id){
+        postService.removerPost(id);
+        return ResponseEntity.noContent().build();
+
+    }
+
+    @PutMapping
+    public ResponseEntity<PostDTO> alterarPost(@Valid @RequestBody AtualizarPostDTO dto, @RequestParam String id){
+        PostDTO postDTO = postService.updatePost(dto, id);
+        return ResponseEntity.ok(postDTO);
+    }
 
 }

@@ -1,6 +1,7 @@
 package com.mila.foodis.business.service;
 
 import com.mila.foodis.business.converter.UsuarioConverter;
+import com.mila.foodis.business.dto.AtualizarUsuarioDTO;
 import com.mila.foodis.business.dto.UsuarioDTO;
 import com.mila.foodis.business.validator.UsuarioValidator;
 import com.mila.foodis.infrastructure.entity.Usuario;
@@ -24,7 +25,7 @@ public class UsuarioService {
     private final UsuarioConverter usuarioConverter;
     private final List<UsuarioValidator> validators;
 
-    public UsuarioDTO updateUsuario(UsuarioDTO dto, String id) {
+    public UsuarioDTO updateUsuario(AtualizarUsuarioDTO dto, String id) {
         try {
             Usuario entity = usuarioRepository.findById(id).
                     orElseThrow(() -> new RuntimeException("Não foi possível encontrar o Id."));

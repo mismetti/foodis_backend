@@ -2,6 +2,7 @@ package com.mila.foodis.infrastructure.entity;
 
 import com.mila.foodis.infrastructure.repository.PostRepository;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -15,6 +16,7 @@ import java.util.UUID;
 @Data
 @Document("post")
 @AllArgsConstructor
+@Builder
 public class Post {
 
     @Id
@@ -24,7 +26,6 @@ public class Post {
     private String imagemUrl;
     @DBRef
     private Usuario usuario;
-    private String usuarioId;
     private LocalDateTime dataCriacao;
     private LocalDateTime dataAtualizacao;
 

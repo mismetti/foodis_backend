@@ -1,5 +1,6 @@
 package com.mila.foodis.business.controller;
 
+import com.mila.foodis.business.dto.AtualizarUsuarioDTO;
 import com.mila.foodis.business.dto.UsuarioDTO;
 import com.mila.foodis.business.service.UsuarioService;
 import com.mila.foodis.infrastructure.entity.Usuario;
@@ -46,7 +47,7 @@ public class UsuarioController {
     }
 
     @PutMapping
-    public ResponseEntity<UsuarioDTO> editaUsuario(@Valid @RequestBody UsuarioDTO dto, @RequestParam("id") String id){
+    public ResponseEntity<UsuarioDTO> editaUsuario(@Valid @RequestBody AtualizarUsuarioDTO dto, @RequestParam("id") String id){
         UsuarioDTO usuario = usuarioService.updateUsuario(dto, id);
         return ResponseEntity.ok(usuario);
     }

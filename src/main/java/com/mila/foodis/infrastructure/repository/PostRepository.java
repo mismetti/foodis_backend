@@ -13,7 +13,7 @@ public interface PostRepository extends MongoRepository<Post, String> {
 
     Post findById();
 
-    List<Post> findByUsuarioId(String idUsuario);
+    List<Post> findPostsByUsuarioId(String idUsuario);
 
 
 }
